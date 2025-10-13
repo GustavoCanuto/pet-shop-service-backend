@@ -9,12 +9,31 @@ use Illuminate\Support\Facades\DB;
 
 class ArquivoController extends Controller
 {
+
+    /**
+     * @OA\Get(
+     *     path="/api/arquivos",
+     *     summary="Listar arquivos",
+     *     @OA\Response(response=200, description="Lista de arquivos")
+     * )
+     */
     public function index(Request $request)
     {
         $perPage = $request->get('page', 10);
         return Arquivo::paginate($perPage);
     }
 
+    /**
+     * @OA\Post(
+     *     path="/api/arquivos",
+     *     summary="Cadastrar arquivo",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(ref="#/components/schemas/Arquivo")
+     *     ),
+     *     @OA\Response(response=201, description="Arquivo criado")
+     * )
+     */
     public function store(Request $request)
     {
         DB::beginTransaction();
@@ -35,11 +54,35 @@ class ArquivoController extends Controller
         }
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/arquivos/{id}",
+     *     summary="Mostrar arquivo",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(response=200, description="Arquivo encontrado")
+     * )
+     */
     public function show(string $id)
     {
         return Arquivo::findOrFail($id);
     }
 
+    /**
+     * @OA\Put(
+     *     path="/api/arquivos/{id}",
+     *     summary="Atualizar arquivo",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(ref="#/components/schemas/Arquivo")
+     *     ),
+     *     @OA\Response(response=200, description="Arquivo atualizado")
+     * )
+     */
     public function update(Request $request, string $id)
     {
         $arquivo = Arquivo::findOrFail($id);
@@ -51,6 +94,19 @@ class ArquivoController extends Controller
         ]);
     }
 
+    /**
+     * @OA\Delete(
+     *     path="/api/arquivos/{id}",
+     *     summary="Deletar arquivo",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(response=200, description="Arquivo deletado")
+     * )
+     */
     public function destroy(string $id)
     {
         $arquivo = Arquivo::findOrFail($id);

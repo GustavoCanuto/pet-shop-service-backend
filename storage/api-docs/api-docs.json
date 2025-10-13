@@ -1,0 +1,640 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Pet Shop",
+        "description": "Documentação da API Pet Shop",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/arquivos": {
+            "get": {
+                "summary": "Listar arquivos",
+                "operationId": "6f5ae46525b5ef3667671e5d695174f1",
+                "responses": {
+                    "200": {
+                        "description": "Lista de arquivos"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Cadastrar arquivo",
+                "operationId": "4b0055f286f9dab54d2e425225bf70ef",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Arquivo"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Arquivo criado"
+                    }
+                }
+            }
+        },
+        "/api/arquivos/{id}": {
+            "get": {
+                "summary": "Mostrar arquivo",
+                "operationId": "87fef9016a8ec64ab7152472158bc667",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Arquivo encontrado"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Atualizar arquivo",
+                "operationId": "8c9911f5509dc96b7e41e640be8a5e1f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Arquivo"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Arquivo atualizado"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deletar arquivo",
+                "operationId": "01ee7fb05d75736c6c7ec15590f55920",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Arquivo deletado"
+                    }
+                }
+            }
+        },
+        "/api/consultas": {
+            "get": {
+                "summary": "Listar consultas",
+                "operationId": "6b9a9deca0de3bd3c0ce4e567c2bc307",
+                "responses": {
+                    "200": {
+                        "description": "Lista de consultas"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Cadastrar consulta",
+                "operationId": "8a267506eaf2ad9fbd69dd08002284a9",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Consulta"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Consulta criada"
+                    }
+                }
+            }
+        },
+        "/api/consultas/{id}": {
+            "get": {
+                "summary": "Mostrar consulta",
+                "operationId": "a822674ac6c730b13aba834afb2ca4f3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Consulta encontrada"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Atualizar consulta",
+                "operationId": "31bcc74db8e153d2a0cd9e2d2b106778",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Consulta"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Consulta atualizada"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deletar consulta",
+                "operationId": "d95d7edacdc5ea30c86750bd6ef9ae95",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Consulta deletada"
+                    }
+                }
+            }
+        },
+        "/api/enderecos": {
+            "get": {
+                "summary": "Listar endereços",
+                "operationId": "eaa67d6b1d5ab2d3487483bf7cd9ee20",
+                "responses": {
+                    "200": {
+                        "description": "Lista de endereços"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Cadastrar endereço",
+                "operationId": "7503e124e0fd8144c6a9901d2e08bb19",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Endereco"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Endereço criado"
+                    }
+                }
+            }
+        },
+        "/api/enderecos/{id}": {
+            "get": {
+                "summary": "Mostrar endereço",
+                "operationId": "04f205c824b703870cfdbbbcf75cc3f3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Endereço encontrado"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Atualizar endereço",
+                "operationId": "5aac4f6f8753fbad5804363cd0f793f1",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Endereco"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Endereço atualizado"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deletar endereço",
+                "operationId": "9f4f92c7f07c1b2f09355a725a9d51cc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Endereço deletado"
+                    }
+                }
+            }
+        },
+        "/api/pets": {
+            "get": {
+                "summary": "Listar pets",
+                "operationId": "7b44ba1ad8a38f7865a2845fa9ebbfe3",
+                "responses": {
+                    "200": {
+                        "description": "Lista de pets"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Cadastrar pet",
+                "operationId": "9523721805529edb47b46332d56f2826",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Pet"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Pet criado"
+                    }
+                }
+            }
+        },
+        "/api/pets/{id}": {
+            "get": {
+                "summary": "Mostrar pet",
+                "operationId": "25e25b195a59c4b940a33f9961ad6eed",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pet encontrado"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Atualizar pet",
+                "operationId": "652be7eab297dff87f093d849bdecb12",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Pet"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Pet atualizado"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deletar pet",
+                "operationId": "dab25348cae9362e48ade0e7cf34c465",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pet deletado"
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "summary": "Listar usuários",
+                "operationId": "c457726701591d1183b53aa71fc13441",
+                "responses": {
+                    "200": {
+                        "description": "Lista de usuários"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Cadastrar usuário",
+                "operationId": "592819a0265360b2014512d6dbfaf0e7",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Usuário criado"
+                    }
+                }
+            }
+        },
+        "/api/users/{id}": {
+            "get": {
+                "summary": "Mostrar usuário",
+                "operationId": "36a33ff774d5cba33c039dec2c3e0287",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuário encontrado"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Atualizar usuário",
+                "operationId": "b9091397c8b25f12c6adb74be6ce3a5a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuário atualizado"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deletar usuário",
+                "operationId": "fa56cffde745d3f152f95cbacd936c0b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuário deletado"
+                    }
+                }
+            }
+        },
+        "/api/users/{userId}/pets/{petId}": {
+            "post": {
+                "summary": "Adicionar pet ao usuário",
+                "operationId": "16585a21b51403a2e9a675909b6ab9c4",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "petId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pet vinculado ao usuário"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Remover pet do usuário",
+                "operationId": "72368532250cd96cfa1740a1c403101e",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "petId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pet desvinculado do usuário"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Arquivo": {
+                "title": "Arquivo",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Consulta": {
+                "title": "Consulta",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "descricao": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Endereco": {
+                "title": "Endereco",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "logradouro": {
+                        "type": "string"
+                    },
+                    "numero": {
+                        "type": "string"
+                    },
+                    "cidade": {
+                        "type": "string"
+                    },
+                    "estado": {
+                        "type": "string"
+                    },
+                    "cep": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Pet": {
+                "title": "Pet",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "raca": {
+                        "type": "string"
+                    },
+                    "idade": {
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "User": {
+                "title": "User",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
