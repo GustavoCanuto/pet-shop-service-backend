@@ -10,5 +10,6 @@ class Pet extends Model
         'nome',
         'idade',
         'raca',
+        'tipo',
     ];
 }
