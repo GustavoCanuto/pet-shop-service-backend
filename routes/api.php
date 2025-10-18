@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/teste', [TesteController::class, 'index']);
 
 Route::apiResource('users', UserController::class);
+Route::post('/users/login', [UserController::class, 'login']);
+
 Route::apiResource('enderecos', EnderecoController::class);
 Route::apiResource('pets', PetController::class);
 Route::apiResource('arquivos', ArquivoController::class);

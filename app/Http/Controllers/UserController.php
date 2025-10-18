@@ -78,6 +78,51 @@ class UserController extends Controller
         ]);
     }
 
+        /**
+     * @OA\Post(
+     *     path="/api/users/login",
+     *     summary="Login simples de usuário",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"Email","Senha"},
+     *             @OA\Property(property="Email", type="string", example="teste@exemplo.com"),
+     *             @OA\Property(property="Senha", type="string", example="123456")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Login realizado com sucesso"),
+     *     @OA\Response(response=401, description="Credenciais inválidas")
+     * )
+     */
+    public function login(Request $request)
+    {
+        $email = $request->input('email');  // do JSON
+        $senha = $request->input('senha');  // do JSON
+
+        $user = \App\Models\User::with(['enderecos', 'pets'])
+            ->where('email', $email)  // usar minusculo
+            ->first();
+
+        if (!$user) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Usuário não encontrado!'
+            ], 404);
+        }
+
+        if ($user->senha !== $senha) { // usar minusculo
+            return response()->json([
+                'status' => false,
+                'message' => 'Senha incorreta!'
+            ], 401);
+        }
+
+        return response()->json([
+            'status' => true,
+            'data' => $user
+        ]);
+    }
+
     /**
      * @OA\Put(
      *     path="/api/users/{id}",
