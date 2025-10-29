@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Consulta extends Model
 {
-    protected $fillable = ['data', 'id_veterinario', 'id_dono', 'id_pet'];
+    protected $fillable = ['data', 'hora', 'id_veterinario', 'id_dono', 'id_pet'];
 
     public function veterinario() {
         return $this->belongsTo(User::class, 'id_veterinario');

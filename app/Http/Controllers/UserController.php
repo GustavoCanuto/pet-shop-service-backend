@@ -7,6 +7,7 @@ use App\Models\Pet;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -21,7 +22,17 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->get('page', 10);
-        return User::paginate($perPage);
+
+        // Inicia a query
+        $query = User::query();
+
+        // Se houver filtro por permissao
+        if ($request->has('permissao')) {
+            $query->where('permissao', $request->get('permissao'));
+        }
+
+        // Retorna com paginação
+        return $query->paginate($perPage);
     }
 
     /**
@@ -35,12 +46,30 @@ class UserController extends Controller
      *     @OA\Response(response=201, description="Usuário criado")
      * )
      */
-    public function store(Request $request)
+        public function store(Request $request)
     {
+        // Validação
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|unique:users,email',
+            'nome' => 'required|string',
+            'sobrenome' => 'required|string',
+            'senha' => 'required|string',
+            'permissao' => 'required|integer',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => $validator->errors()->first()
+            ], 400);
+        }
+
+        // Criar usuário
         DB::beginTransaction();
         try {
-            $user = User::create($request->json()->all());
+            $user = User::create($request->all());
             DB::commit();
+
             return response()->json([
                 'status' => true,
                 'message' => 'Usuário cadastrado com sucesso!',
