@@ -27,6 +27,10 @@ class ConsultaController extends Controller
             $query->where('id_veterinario', $request->id_veterinario);
         }
 
+        if ($request->has('id_dono')) {
+            $query->where('id_dono', $request->id_dono);
+        }
+
         // Filtrar por data (yyyy-mm-dd)
         if ($request->has('data')) {
             $query->whereDate('data', $request->data);

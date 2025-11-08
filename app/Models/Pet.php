@@ -25,4 +25,8 @@ class Pet extends Model
         'raca',
         'tipo',
     ];
+
+    protected $casts = [
+        'tipo' => 'string',
+    ];
 }

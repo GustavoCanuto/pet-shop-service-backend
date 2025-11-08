@@ -19,8 +19,22 @@ class PetController extends Controller
      */
     public function index(Request $request)
     {
-        $perPage = $request->get('page', 10); // valor padrão = 10
-        return Pet::paginate($perPage);
+        $perPage = $request->get('per_page', 10);
+
+        $query = Pet::query();
+
+        // Filtrar por dono
+        if ($request->has('id_dono')) {
+            $idDono = $request->id_dono;
+
+            $query->whereIn('id', function ($sub) use ($idDono) {
+                $sub->select('id_pet')
+                    ->from('user_pet') //
+                    ->where('id_user', $idDono); //
+            });
+        }
+
+        return $query->paginate($perPage);
     }
 
     /**
